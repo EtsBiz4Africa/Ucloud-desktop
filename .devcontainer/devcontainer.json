@@ -1,16 +1,20 @@
 {
-  "name": "Ubora Cloud Dev",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Image Docker de base
+  "name": "Ubora Cloud Desktop Client",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Linux recommandé
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "18"  // Exemple : Node.js pour les clients
-    }
+    "ghcr.io/devcontainers/features/cmake:1": {},
+    "ghcr.io/devcontainers/features/qt:1": {},           // Framework Qt
+    "ghcr.io/devcontainers/features/gcc:1": {}           // Compilateur C++
   },
-  "forwardPorts": [8080],  // Ports exposés (ex: NextCloud)
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y php mysql-client",  // Packages supplémentaires
+  "forwardPorts": [3000],  // Utile pour un éventuel debug HTTP
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git-buildpackage debhelper",  // Outils pour packages .deb
   "customizations": {
     "vscode": {
-      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens"]  // Extensions VS Code utiles
+      "extensions": [
+        "ms-vscode.cpptools",           // Extension C++
+        "twxs.cmake",                   // CMake support
+        "nico-castell.linux-desktop-file"  // Pour les fichiers .desktop
+      ]
     }
   }
 }
