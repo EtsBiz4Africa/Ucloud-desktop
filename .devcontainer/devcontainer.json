@@ -1,0 +1,16 @@
+{
+  "name": "Ubora Cloud Dev",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",  // Image Docker de base
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"  // Exemple : Node.js pour les clients
+    }
+  },
+  "forwardPorts": [8080],  // Ports exposés (ex: NextCloud)
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y php mysql-client",  // Packages supplémentaires
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-azuretools.vscode-docker", "eamodio.gitlens"]  // Extensions VS Code utiles
+    }
+  }
+}
